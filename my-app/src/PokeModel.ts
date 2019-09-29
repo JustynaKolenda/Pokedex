@@ -1,6 +1,9 @@
 export type IPoke = {
-    
-        id: number,
+        name: string,
+        url: string
+}
+
+export type IPokemon = {
         name: string,
         growth_time: number,
         max_harvest: number,
@@ -27,5 +30,4 @@ export type IPoke = {
             name: string,
             url:  string
         }
-    
 }
