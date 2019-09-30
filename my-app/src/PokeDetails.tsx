@@ -4,40 +4,24 @@ import { IPokemon } from './PokeModel';
 type PokeDetailsS = {
     pokemon: IPokemon
 }
+  
 
 export class PokeDetails extends React.Component<any, PokeDetailsS> {
 
   constructor(props:any){
     super(props)
     this.state = {
-     pokemon: {
-        name: '',
-        growth_time: 0,
-        max_harvest: 0,
-        natural_gift_power: 0,
-        size: 0,
-        smoothness: 0,
-        soil_dryness: 0,
-        firmness: {
+        pokemon: {
             name: '',
-            url: '',
-        },
-        flavors: [{
-            potency: 0,
-            flavor: {
-                name: '',
-                url: '',
-            }
-        }],
-        item: {
-            name: '',
-            url: '',
-        },
-        natural_gift_type: {
-            name: '',
-            url:  ''
+            stats: [],
+            types: [],
+            weight: 0,
+            height: 0,
+            eggGroups: '',
+            hatch_Steps: 0,
+            abilities: [],
+            evs: ''
         }
-    }
     }
   }
 
@@ -50,19 +34,65 @@ export class PokeDetails extends React.Component<any, PokeDetailsS> {
             
         })
     })
+    
   }
 
+
+  public getImage() {
+    const pokemonSpeciesUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${this.props.match.params.pokemonIndex}.png?raw=true`;
+    return pokemonSpeciesUrl;
+  }
   public render(){
       const pokemon = this.state.pokemon;
-      console.log(pokemon)
     return (
         <div>
-            <div>{pokemon.name}</div>
-            <p>{pokemon.growth_time}</p>
-            <p>{pokemon.max_harvest}</p>
-            <p>{pokemon.natural_gift_power}</p>
-            <p>{pokemon.size}</p>
-
+            <div className="pokeDetail--type">
+                <div className="pokeDetail--type__text">
+                {
+                    pokemon.types.map((el:any, key)=>{
+                        return <div className="pokeDetail--" key={el.type.name} >{el.type.name.toLowerCase()
+                            .split(' ')
+                            .map((s:any) => s.charAt(0).toUpperCase() + s.substring(1))
+                            .join(' ')}</div>
+                    })
+                }
+                </div>
+            </div>
+            <div className={"pokeDetail"}>
+                <div className="pokeDetail--box">
+                    <img className="pokeDetail--imgPokemon" src={this.getImage()} alt=""/>
+                    <div className="pokeDetail--name">{pokemon.name.toLowerCase()
+                        .split(' ')
+                        .map((s:any) => s.charAt(0).toUpperCase() + s.substring(1))
+                        .join(' ')}
+                    </div>
+                    {
+                        pokemon.stats.map((el:any, key)=>{
+                            return <div className="pokeDetail--details" key={el.stat.name}>{el.stat.name.toLowerCase()
+                                .split(' ')
+                                .map((s:any) => s.charAt(0).toUpperCase() + s.substring(1))
+                                .join(' ')}: {el.base_stat}</div>
+                        })
+                    }
+                </div>
+            </div>
+            <div className={"pokeDetail"}>
+                <div className="pokeDetail--boxProfile">
+                    <div className="pokeDetail--nameProfile">
+                        Profile
+                    </div>
+                    <div className="pokeDetail--profilDetail">Weight: {pokemon.weight} lbs</div>    
+                    <div className="pokeDetail--profilDetail">Height: {pokemon.height} ft.</div>
+                    <div  className="pokeDetail--profilDetail">
+                      <div className="pokeDetail--ability">  Abilities: 
+                        {
+                            pokemon.abilities.map((el:any, key)=>{
+                                return <div className="pokeDetail--detailsAbility" key={el.ability.name}>{el.ability.name}</div>
+                            })
+                        }</div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

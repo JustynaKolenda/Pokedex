@@ -41,11 +41,14 @@ export class PokeView extends React.Component<Props, PokeViewS> {
         { 
           this.state.pokemons.map((pokemons:any, key) =>{
           const index = pokemons.url.split('/')[pokemons.url.split('/').length - 2]
-
+          const pokemonSpeciesUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index}.png?raw=true`;
             return( 
                 <div className="pokeView--pokedex" key={index}>
-                  <div >{pokemons.name} </div>
-                  <NavLink className="pokeView--navigation" to={`chosen/${index}`} >Szczegóły</NavLink>
+                   <img src={pokemonSpeciesUrl} alt=""/>
+                  <NavLink className="pokeView--navigation" to={`chosen/${index}`} >{pokemons.name.toLowerCase()
+                  .split(' ')
+                  .map((s:any) => s.charAt(0).toUpperCase() + s.substring(1))
+                  .join(' ')}</NavLink>
                 </div>
               ) 
           })

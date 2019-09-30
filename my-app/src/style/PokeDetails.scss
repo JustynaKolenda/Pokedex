@@ -1,0 +1,97 @@
+.pokeDetail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--box{
+        border: solid 2px;
+        width: 40%;
+        border-color: black;
+        border-radius: 200px 200px 30px 30px;
+        background-color: #b51414ed;
+    }
+    &--imgPokemon{
+        position: relative;
+        float: left;
+        width: 200px;
+        left: 10%;
+        top: 40px;
+    }
+    &--details{
+        color: #ffffff;
+        font-size: 20px;
+        line-height: 2;
+        &:nth-last-child(1){
+            margin-bottom: 10px;
+            left: 63%;
+            position: relative;
+            transform: translateX(-50%);
+        }
+    }
+    &--name{
+        color: #ffffff;
+        font-size: 25px;
+        padding-bottom: 10px;
+    }
+    &--type{
+        position: relative;
+        margin-top: 100px;
+        left: 60%;
+        transform: translateX(-50%);
+        &__text{
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+    &--boxProfile{
+        border-radius: 30px 30px 200px 200px;
+        background-color: #ffffff;
+        border: solid 2px;
+        width: 40%;
+        border-color: black;
+    }
+    &--detailsProf{
+        color: black;
+        font-size: 20px;
+        line-height: 2;
+        &:nth-last-child(1){
+            margin-bottom: 10px;
+            left: 63%;
+            position: relative;
+            transform: translateX(-50%);
+        }
+    }
+    &--nameProfile{
+        font-size: 25px;
+        font-weight: 600;
+        left: 62%;
+        position: relative;
+        transform: translateX(-50%);
+    }
+    &--profilDetail{
+        font-size: 20px;
+        margin-top: 10px;
+        font-weight: 400;
+        left: 62%;
+        position: relative;
+        transform: translateX(-50%);
+    }
+    &--ability{
+        font-size: 20px;
+        color: black;
+        font-weight: 600;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 50%;
+    }
+    &--detailsAbility{
+        color: black;
+        font-size: 20px;
+        font-weight: 400;
+        margin-left: 20px;
+        &:nth-last-child(1){
+        margin-bottom: 50px;
+        }
+    }
+}

@@ -5,29 +5,12 @@ export type IPoke = {
 
 export type IPokemon = {
         name: string,
-        growth_time: number,
-        max_harvest: number,
-        natural_gift_power: number,
-        size: number,
-        smoothness: number,
-        soil_dryness: number,
-        firmness: {
-            name: string,
-            url: string,
-        },
-        flavors: [{
-            potency: number,
-            flavor: {
-                name: string,
-                url: string,
-            }
-        }],
-        item: {
-            name: string,
-            url: string,
-        },
-        natural_gift_type: {
-            name: string,
-            url:  string
-        }
+        stats: Array<any>,
+        types: Array<any>,
+        weight: number
+        height: number,
+        eggGroups: string,
+        hatch_Steps: number,
+        abilities: Array<any>,
+        evs: string
 }
